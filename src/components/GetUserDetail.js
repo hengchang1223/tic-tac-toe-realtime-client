@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, DropdownButton, Dropdown } from 'react-bootstrap';
 
 class GetUserDetail extends Component {
     constructor() {
         super();
         this.state = {
-            mobileNumber: "1234567890"
+            mobileNumber: "1234567890",
+            gameMode: "2d3",
+            dropDownValue: "Choose Game Mode (2D 3x3 by default)"
         };
     };
 
@@ -17,7 +19,21 @@ class GetUserDetail extends Component {
     };
 
     submitMobileNumber = () => {
-        this.props.socket.emit('checkUserDetail', { "mobileNumber": this.state.mobileNumber });
+        this.props.socket.emit('checkUserDetail', {
+            "mobileNumber": this.state.mobileNumber,
+            "gameMode": this.state.gameMode
+        });
+    };
+
+    onGameModeSelect = (e) => {
+        this.setState({
+            "gameMode": e,
+            
+        });
+    };
+
+    changeDropDownTitle = (text) => {
+        this.setState({ dropDownValue: text});
     };
 
     onMobileNumberChange = (e) => {
@@ -33,6 +49,10 @@ class GetUserDetail extends Component {
                     <Form.Text className="text-muted">
                         Enter Your Mobile Number
                     </Form.Text>
+                    <DropdownButton title={this.state.dropDownValue} onSelect={this.onGameModeSelect}>
+                        <Dropdown.Item eventKey="2d3" onClick={() => this.changeDropDownTitle("2D 3x3")}>2D 3x3</Dropdown.Item>
+                        <Dropdown.Item eventKey="3d3" onClick={() => this.changeDropDownTitle("3D 3x3")}>3D 3x3</Dropdown.Item>
+                    </DropdownButton>
                     <Button disabled={this.state.mobileNumber.length !== 10} onClick={this.submitMobileNumber} variant="primary" type="button">
                         Submit
                     </Button>

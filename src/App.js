@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import GetUserDetail from './components/GetUserDetail';
-import GetGameMode from './components/GetGameMode';
+// import GetGameMode from './components/GetGameMode';
 import ShowUsers from './components/ShowUsers';
 import GamePlay from './components/GamePlay';
 import { Container } from 'react-bootstrap';
@@ -39,10 +39,10 @@ class App extends Component {
     // If registration successfully redirect to player list
     this.setState({ isRegistered: data });
   };
-  gameModeConfirmation = (data) => {
-    // If game mode successfully be choose 
-    this.setState({ gameModeChosen: data });
-  };
+  // gameModeConfirmation = (data) => {
+  //   // If game mode successfully be choose 
+  //   this.setState({ gameModeChosen: data });
+  // };
   gameStartConfirmation = (data) => {
     // If select opponent player then start game and redirect to game play
     this.setState({ isGameStarted: data.status, gameId: data.game_id, gameData: data.game_data });
@@ -56,13 +56,14 @@ class App extends Component {
     return (
       <Container>
         {
-          !this.state.isGameStarted ? !this.state.gameModeChosen ? !this.state.isRegistered ? <header className="App-header">
+          // !this.state.isGameStarted ? !this.state.gameModeChosen ? !this.state.isRegistered ? <header className="App-header">
+          !this.state.isGameStarted ? !this.state.isRegistered ? <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
             {this.state.socket
               ? <GetUserDetail socket={this.state.socket} registrationConfirmation={this.registrationConfirmation} />
               : <p>Loading...</p>}
           </header> :
-            <GetGameMode socket={this.state.socket} gameModeConfirmation={this.gameModeConfirmation} /> :
+            // <GetGameMode socket={this.state.socket} gameModeConfirmation={this.gameModeConfirmation} /> :
             <ShowUsers socket={this.state.socket} gameStartConfirmation={this.gameStartConfirmation} /> :
             <GamePlay socket={this.state.socket} gameId={this.state.gameId} gameData={this.state.gameData} opponentLeft={this.opponentLeft} />
         }
