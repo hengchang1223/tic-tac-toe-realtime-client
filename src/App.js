@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
+import board from './images/board.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import GetUserDetail from './components/GetUserDetail';
@@ -58,7 +59,7 @@ class App extends Component {
         {
           // !this.state.isGameStarted ? !this.state.gameModeChosen ? !this.state.isRegistered ? <header className="App-header">
           !this.state.isGameStarted ? !this.state.isRegistered ? <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
+            <img src={board} className="App-logo" alt="board" />
             {this.state.socket
               ? <GetUserDetail socket={this.state.socket} registrationConfirmation={this.registrationConfirmation} />
               : <p>Loading...</p>}
