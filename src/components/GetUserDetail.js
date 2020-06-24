@@ -5,7 +5,7 @@ class GetUserDetail extends Component {
     constructor() {
         super();
         this.state = {
-            mobileNumber: "1234567890",
+            mobileNumber: "",
             gameMode: "2d3",
             dropDownValue: "Choose Game Mode (2D 3x3 by default)"
         };
@@ -45,7 +45,7 @@ class GetUserDetail extends Component {
             <Form>
                 <Form.Group>
                     <Form.Label>Enter Your Mobile Number</Form.Label>
-                    <Form.Control type="number" value={this.state.mobileNumber} onChange={this.onMobileNumberChange} placeholder="Enter Mobile" />
+                    <Form.Control type="number" value={this.state.mobileNumber} onChange={this.onMobileNumberChange} placeholder="Enter Mobile (10 digit number)" />
                     <Form.Text className="text-muted">
                         Enter Your Mobile Number
                     </Form.Text>
