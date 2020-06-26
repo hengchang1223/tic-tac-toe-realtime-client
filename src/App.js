@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
 import board from './images/board.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -9,9 +8,6 @@ import ShowUsers from './components/ShowUsers';
 import GamePlay from './components/GamePlay';
 import { Container } from 'react-bootstrap';
 import socketIOClient from "socket.io-client";
-
-// import Chat from './components/Chat/Chat';
-// import Join from './components/Join/Join';
 
 // import { BrowserRouter as Router, Route } from "react-router-dom";
 
@@ -36,23 +32,28 @@ class App extends Component {
       this.setState({ socket: socket })
     });
   }
+
   registrationConfirmation = (data) => {
     // If registration successfully redirect to player list
     this.setState({ isRegistered: data });
   };
+
   // gameModeConfirmation = (data) => {
   //   // If game mode successfully be choose 
   //   this.setState({ gameModeChosen: data });
   // };
+
   gameStartConfirmation = (data) => {
     // If select opponent player then start game and redirect to game play
     this.setState({ isGameStarted: data.status, gameId: data.game_id, gameData: data.game_data });
   };
+
   opponentLeft = (data) => {
     // If opponent left then get back from game play to player screen
     alert("Opponent Left");
     this.setState({ isGameStarted: false, gameId: null, gameData: null });
   };
+
   render() {
     return (
       <Container>
@@ -72,14 +73,5 @@ class App extends Component {
     );
   }
 }
-
-// const App = () => {
-//   return (
-//     <Router>
-//       <Route path="/" exact component={Join} />
-//       <Route path="/chat" component={Chat} />
-//     </Router>
-//   );
-// }
 
 export default App;
