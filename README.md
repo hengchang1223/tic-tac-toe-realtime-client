@@ -2,30 +2,11 @@
 
 Web app based on [React](https://reactjs.org/) & [Express](https://expressjs.com/) to play tic tac toe in realtime with other users online. 
 
-There are 2 different game modes:
-1. [2D Tic Tac Toe](#ttt2d)
-2. [3D Tic Tac Toe](#ttt3d)
-  
-  
-***
-### [2D Tic Tac Toe](#ttt2d)
-
-The most classic version Tic Tac Toe!
-
-Here is a demo:
-
-![2d_demo](src/images/2d_demo.gif)
-
-***
-### [3D Tic Tac Toe](#ttt3d)
-
-More like a Brain Teaser!
-
-Here is a demo:
-
-![3d_demo](src/images/3d_demo.gif)
-
-
+There are 2 different game sizes:
+1. 2D 3x3
+2. 3D 3x3
+3. 2D 4x4
+4. 3D 4x4
 
 ### TODO:
 
